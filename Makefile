@@ -6,7 +6,7 @@
 #    By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/22 07:21:18 by mmoussou          #+#    #+#              #
-#    Updated: 2024/02/26 04:43:48 by mmoussou         ###   ########.fr        #
+#    Updated: 2024/02/27 12:42:59 by mmoussou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,7 @@ $(LIBFT): $(LIBFT_DIR)
 	@printf "\x1B[2K\r \x1B[1;32m[ 󱌣 ]\x1B[0m Compiling Objects... : $<"
 	@$(CC) $(CFLAGS) -I$(INCLUDE) -I$(MLX_INCLUDE) -I$(LIBFT_INCLUDE) $< -c -o $@
 
-$(NAME): $(LIBFT) $(OBJS) $(MLX)
+$(NAME): $(LIBFT) $(MLX) $(OBJS)
 	@printf "\x1B[2K\r \x1B[1;32m[ 󱌣 ]\x1B[0m Objects Compiled."
 	@printf "\n \x1B[1;33m[ 󱉟 ]\x1B[0m Compiling $(NAME)..."
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -I$(INCLUDE) -I$(MLX_INCLUDE) -I$(LIBFT_INCLUDE) -o $(NAME) $(COPTS)
