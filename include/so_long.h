@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:29:19 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/02/27 00:21:47 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/03/01 20:50:10 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,14 @@
 
 // --------------- STRUCTS ---------------
 
-typedef struct
+typedef struct s_map
 {
 	int		x;
 	int		y;
 	t_list	*map;
 }	t_map;
 
-typedef struct
+typedef struct s_map
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
