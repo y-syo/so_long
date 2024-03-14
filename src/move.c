@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 20:54:20 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/03/01 21:01:45 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/03/14 18:39:27 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,21 @@ int	have_moved(t_list *map)
 	return (0);
 }
 
+int	can_go_here(t_mlx *mlx, char here)
+{
+	if (still_some_collectibles(mlx))
+		return (here != '1' && here != 'E');
+	else
+	{
+		if (here == 'E')
+		{
+			mlx_end(0, mlx->mlx_ptr);
+			return (-1);
+		}
+		return (here != '1');
+	}
+}
+
 void	move(int x, int y, t_mlx *mlx)
 {
 	t_list		*map;
@@ -83,16 +98,16 @@ void	move(int x, int y, t_mlx *mlx)
 	player_x = find_player_x(map);
 	player_y = get_map_y(map);
 	if (x > 0)
-		if (((char *) player_y->next->content)[player_x + 1] != '1')
+		if (can_go_here(mlx, ((char *)player_y->next->content)[player_x + 1]))
 			((char *) player_y->next->content)[player_x + 1] = 'P';
 	if (x < 0)
-		if (((char *) player_y->next->content)[player_x - 1] != '1')
+		if (can_go_here(mlx, ((char *)player_y->next->content)[player_x - 1]))
 			((char *) player_y->next->content)[player_x - 1] = 'P';
 	if (y > 0)
-		if (((char *) player_y->next->next->content)[player_x] != '1')
+		if (can_go_here(mlx, ((char *)player_y->next->next->content)[player_x]))
 			((char *) player_y->next->next->content)[player_x] = 'P';
 	if (y < 0)
-		if (((char *) player_y->content)[player_x] != '1')
+		if (can_go_here(mlx, ((char *)player_y->content)[player_x]))
 			((char *) player_y->content)[player_x] = 'P';
 	if (have_moved(map))
 	{

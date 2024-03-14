@@ -6,13 +6,13 @@
 #    By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/22 07:21:18 by mmoussou          #+#    #+#              #
-#    Updated: 2024/02/27 12:42:59 by mmoussou         ###   ########.fr        #
+#    Updated: 2024/03/01 21:10:41 by mmoussou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SHELL = bash
 
-CC = clang
+CC = gcc
 
 LIBFT_DIR = ./libft
 
@@ -20,7 +20,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 LIBFT_INCLUDE = $(LIBFT_DIR)/include
 
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 
 COPTS = -lSDL2 -lm
 
@@ -30,6 +30,8 @@ NAME = so_long
 
 #find -type f -name "*.c" | sed "s/\.\///g" | xargs -Iname echo "`printf '\t\t\t'`" name "\\"
 SRCS = ./src/main.c \
+	   ./src/draw.c \
+	   ./src/move.c \
 	   ./src/parsing.c
 
 OBJS = $(SRCS:.c=.o)
@@ -83,10 +85,10 @@ $(MLX_SRC):
 	@printf " \x1B[1;34m[  ]\x1B[0m Cloned MacroLibX.\n"
 
 $(MLX): $(MLX_SRC)
-	@make -s -j16 -C $(MLX_SRC) all
+	@make -s -j -C $(MLX_SRC) all
 
 $(LIBFT): $(LIBFT_DIR)
-	@make -s -C $(LIBFT_DIR)
+	@make -s -j -C $(LIBFT_DIR)
 
 %.o: %.c
 	@printf "\x1B[2K\r \x1B[1;32m[ 󱌣 ]\x1B[0m Compiling Objects... : $<"

@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:11:53 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/03/01 21:00:46 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/03/01 21:56:36 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	init_img(t_mlx *mlx)
 	mlx->img_coll = mlx_png_file_to_image(mlx->mlx_ptr, COLL_IMG_PATH, &w, &h);
 	mlx->img_play = mlx_png_file_to_image(mlx->mlx_ptr, PLAY_IMG_PATH, &w, &h);
 	mlx->img_exit = mlx_png_file_to_image(mlx->mlx_ptr, EXIT_IMG_PATH, &w, &h);
+	mlx->img_exit_open = mlx_png_file_to_image(mlx->mlx_ptr,
+			"res/img/goku.png", NULL, NULL);
 	return (0);
 }
 
@@ -57,6 +59,7 @@ void	destroy_images(t_mlx *mlx)
 	mlx_destroy_image(mlx->mlx_ptr, mlx->img_coll);
 	mlx_destroy_image(mlx->mlx_ptr, mlx->img_play);
 	mlx_destroy_image(mlx->mlx_ptr, mlx->img_exit);
+	mlx_destroy_image(mlx->mlx_ptr, mlx->img_exit_open);
 }
 
 int	main(int argc, char **argv)
@@ -67,7 +70,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (-1);
 	parse(argv, &map);
-	put_img(1, 0, &mlx, 6, 9);
+	put_img(-1, &mlx, 6, 9);
 	mlx.map = &map;
 	mlx.mlx_ptr = mlx_init();
 	init_img(&mlx);

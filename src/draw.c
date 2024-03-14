@@ -6,11 +6,31 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 21:00:18 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/03/01 21:00:31 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/03/01 22:03:36 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	still_some_collectibles(t_mlx *mlx)
+{
+	t_list	*map;
+	int		i;
+
+	map = mlx->map->map;
+	while (map)
+	{
+		i = 0;
+		while (((char *) map->content)[i])
+		{
+			if (((char *) map->content)[i] == 'C')
+				return (1);
+			i++;
+		}
+		map = map->next;
+	}
+	return (0);
+}
 
 void	put_img(int index, t_mlx *mlx, int x, int y)
 {
@@ -21,8 +41,6 @@ void	put_img(int index, t_mlx *mlx, int x, int y)
 		smlx = mlx;
 		return ;
 	}
-	if (!smlx)
-		return ;
 	mlx_put_image_to_window(smlx->mlx_ptr, smlx->win_ptr,
 		smlx->img_tile, x * IMG_WIDTH, y * IMG_HEIGHT);
 	if (index == 1)
@@ -31,6 +49,9 @@ void	put_img(int index, t_mlx *mlx, int x, int y)
 	else if (index == 2)
 		mlx_put_image_to_window(smlx->mlx_ptr, smlx->win_ptr,
 			smlx->img_coll, x * IMG_WIDTH, y * IMG_HEIGHT);
+	else if (index == 3 && !still_some_collectibles(smlx))
+		mlx_put_image_to_window(smlx->mlx_ptr, smlx->win_ptr,
+			smlx->img_exit_open, x * IMG_WIDTH, y * IMG_HEIGHT);
 	else if (index == 3)
 		mlx_put_image_to_window(smlx->mlx_ptr, smlx->win_ptr,
 			smlx->img_exit, x * IMG_WIDTH, y * IMG_HEIGHT);

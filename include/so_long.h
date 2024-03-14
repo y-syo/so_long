@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:29:19 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/03/01 20:50:10 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/03/14 18:38:23 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef struct s_map
 	t_list	*map;
 }	t_map;
 
-typedef struct s_map
+typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
@@ -98,11 +98,19 @@ typedef struct s_map
 	void	*img_coll;
 	void	*img_play;
 	void	*img_exit;
+	void	*img_exit_open;
 	t_map	*map;
 }	t_mlx;
 
 // --------------- FUNCS ---------------
 
 void	parse(char **argv, t_map *map);
+
+void	move(int x, int y, t_mlx *mlx);
+int		update(void *param);
+void	put_img(int index, t_mlx *mlx, int x, int y);
+
+int		still_some_collectibles(t_mlx *mlx);
+int		mlx_end(int event, void *mlx);
 
 #endif
