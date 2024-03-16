@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:11:53 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/03/01 21:56:36 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:26:39 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +69,24 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (-1);
-	parse(argv, &map);
-	put_img(-1, &mlx, 6, 9);
-	mlx.map = &map;
-	mlx.mlx_ptr = mlx_init();
-	init_img(&mlx);
-	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr,
-			map.x * IMG_WIDTH, map.y * IMG_HEIGHT, argv[0]);
-	mlx_on_event(mlx.mlx_ptr, mlx.win_ptr, 5, mlx_end, mlx.mlx_ptr);
-	mlx_on_event(mlx.mlx_ptr, mlx.win_ptr, MLX_KEYDOWN, key_hook, &mlx);
-	mlx_loop_hook(mlx.mlx_ptr, update, &mlx);
-	mlx_set_fps_goal(mlx.mlx_ptr, FPS_LIMIT);
-	mlx_loop(mlx.mlx_ptr);
-	destroy_images(&mlx);
-	mlx_destroy_window(mlx.mlx_ptr, mlx.win_ptr);
-	mlx_destroy_display(mlx.mlx_ptr);
-	return (0);
+	if (!parse(argv, &map))
+	{
+		put_img(-1, &mlx, 6, 9);
+		mlx.map = &map;
+		mlx.mlx_ptr = mlx_init();
+		init_img(&mlx);
+		mlx.win_ptr = mlx_new_window(mlx.mlx_ptr,
+				map.x * IMG_WIDTH, map.y * IMG_HEIGHT, argv[0]);
+		mlx_on_event(mlx.mlx_ptr, mlx.win_ptr, 5, mlx_end, mlx.mlx_ptr);
+		mlx_on_event(mlx.mlx_ptr, mlx.win_ptr, MLX_KEYDOWN, key_hook, &mlx);
+		mlx_loop_hook(mlx.mlx_ptr, update, &mlx);
+		mlx_set_fps_goal(mlx.mlx_ptr, FPS_LIMIT);
+		mlx_loop(mlx.mlx_ptr);
+		destroy_images(&mlx);
+		mlx_destroy_window(mlx.mlx_ptr, mlx.win_ptr);
+		mlx_destroy_display(mlx.mlx_ptr);
+		return (0);
+	}
+	ft_printf("Error\n");
+	return (-1);
 }
