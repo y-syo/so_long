@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:11:53 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/03/16 09:25:31 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/03/17 07:53:11 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,16 +88,20 @@ int	main(int argc, char **argv)
 		destroy_images(&mlx);
 		mlx_destroy_window(mlx.mlx_ptr, mlx.win_ptr);
 		mlx_destroy_display(mlx.mlx_ptr);
+		ft_free("l", &map.map);
 		return (0);
 	}
+	ft_free("l", &map.map);
 	if (status == -1)
-		msg_status = "incorrect map.";
+		msg_status = "Incorrect map.";
 	else if (status == -2)
 		msg_status = "map is not closed.";
 	else if (status == -3)
 		msg_status = "symbols issue.";
 	else if (status == -4)
 		msg_status = "Invalid file.";
+	else if (status == -5)
+		msg_status = "Impossible map.";
 	ft_printf("Error: %s\n", msg_status);
 	return (-1);
 }

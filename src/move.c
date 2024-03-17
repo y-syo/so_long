@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 20:54:20 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/03/14 18:39:27 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/03/17 07:51:44 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,35 @@ int	find_player_x(t_list *map)
 	return (x);
 }
 
-t_list	*get_map_y(t_list *map)
+int	find_player_y(t_list *map)
 {
 	int	i;
+	int	y;
 
-	while (map->next)
+	y = 0;
+	while (map)
 	{
 		i = 0;
-		while (((char *)(map->next->content))[i])
+		while (((char *)(map->content))[i])
 		{
-			if (((char *)(map->next->content))[i] == 'P')
-				return (map);
+			if (((char *)(map->content))[i] == 'P')
+				return (y);
 			i++;
 		}
+		y++;
 		map = map->next;
 	}
-	return (NULL);
+	return (-1);
+}
+
+t_list	*get_map_y(t_list *map, int y)
+{
+	while (map->next && y)
+	{
+		y--;
+		map = map->next;
+	}
+	return (map);
 }
 
 int	have_moved(t_list *map)
@@ -96,7 +109,7 @@ void	move(int x, int y, t_mlx *mlx)
 
 	map = mlx->map->map;
 	player_x = find_player_x(map);
-	player_y = get_map_y(map);
+	player_y = get_map_y(map, find_player_y(map) - 1);
 	if (x > 0)
 		if (can_go_here(mlx, ((char *)player_y->next->content)[player_x + 1]))
 			((char *) player_y->next->content)[player_x + 1] = 'P';

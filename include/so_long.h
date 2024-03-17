@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:29:19 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/03/14 19:20:19 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/03/17 07:50:56 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,8 @@ void	put_img(int index, t_mlx *mlx, int x, int y);
 
 int		still_some_collectibles(t_mlx *mlx);
 int		mlx_end(int event, void *mlx);
+int		find_player_x(t_list *map);
+int		find_player_y(t_list *map);
+t_list	*get_map_y(t_list *map, int y);
 
 #endif
