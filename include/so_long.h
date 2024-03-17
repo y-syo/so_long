@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:29:19 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/03/17 07:50:56 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/03/17 08:55:36 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,6 @@ int		mlx_end(int event, void *mlx);
 int		find_player_x(t_list *map);
 int		find_player_y(t_list *map);
 t_list	*get_map_y(t_list *map, int y);
+int		check_if_possible(t_list *parsed_map);
 
 #endif

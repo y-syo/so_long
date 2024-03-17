@@ -6,7 +6,7 @@
 #    By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/22 07:21:18 by mmoussou          #+#    #+#              #
-#    Updated: 2024/03/16 08:07:43 by mmoussou         ###   ########.fr        #
+#    Updated: 2024/03/17 08:56:27 by mmoussou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,10 +29,12 @@ INCLUDE = ./include
 NAME = so_long
 
 #find -type f -name "*.c" | sed "s/\.\///g" | xargs -Iname echo "`printf '\t\t\t'`" name "\\"
-SRCS = ./src/main.c \
-	   ./src/draw.c \
-	   ./src/move.c \
-	   ./src/parsing.c
+SRCS =		 src/check_if_possible.c \
+			 src/main.c \
+			 src/parsing.c \
+			 src/draw.c \
+			 src/move.c \
+			 src/utils.c
 
 OBJS = $(SRCS:.c=.o)
 
