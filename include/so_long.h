@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:29:19 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/03/17 08:55:36 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/03/22 08:55:16 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include <math.h>
 
 // --------------- CONSTS ---------------
 
@@ -109,6 +108,7 @@ int		parse(char **argv, t_map *map);
 void	move(int x, int y, t_mlx *mlx);
 int		update(void *param);
 void	put_img(int index, t_mlx *mlx, int x, int y);
+int		init_img(t_mlx *mlx);
 
 int		still_some_collectibles(t_mlx *mlx);
 int		mlx_end(int event, void *mlx);

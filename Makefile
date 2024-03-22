@@ -6,7 +6,7 @@
 #    By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/22 07:21:18 by mmoussou          #+#    #+#              #
-#    Updated: 2024/03/22 06:39:37 by mmoussou         ###   ########.fr        #
+#    Updated: 2024/03/22 09:00:27 by mmoussou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ SRCS =		 src/check_if_possible.c \
 			 src/parsing.c \
 			 src/draw.c \
 			 src/move.c \
-			 src/utils.c
+			 src/utils.c \
+			 src/init_img.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -78,7 +79,7 @@ clean: $(LIBFT_DIR)
 	@printf " \x1B[1;31m[  ]\x1B[0m Deleted Objects.\n"
 
 fclean: clean $(LIBFT_DIR)
-	@make -s -C $(LIBFT_DIR) clean
+	@make -s -C $(LIBFT_DIR) fclean
 	@rm -f $(NAME)
 	@printf " \x1B[1;31m[  ]\x1B[0m Deleted $(NAME).\n"
 
