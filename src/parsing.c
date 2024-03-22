@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 19:10:13 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/03/17 09:01:00 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/03/22 07:43:36 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,12 @@ int	check_correct_symbols(t_list *map)
 	return (-1);
 }
 
-int	check_map(t_list *map, size_t x)
+int	check_map(t_list *map, size_t x, size_t y)
 {
 	int	i;
 
+	if (y < 1 || x < 1)
+		return (-1);
 	while (map)
 	{
 		if (x != ft_strlen((char *) map->content) - 1)
@@ -127,14 +129,19 @@ int	parse(char **argv, t_map *map)
 	int		fd;
 
 	map->map = NULL;
+	if (ft_strlen(argv[1]) < 4
+		|| ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber", 4))
+		return (-4);
 	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
+	if (fd < 1)
 		return (-4);
 	map->map = NULL;
 	if (create_map(fd, map))
 		return (-6);
+	if (map->map == NULL)
+		return (-4);
 	map->x = ft_strlen((char *) map->map->content) - 1;
-	if (check_map(map->map, map->x))
+	if (check_map(map->map, map->x, map->y))
 		return (-1);
 	if (check_borders(map->map, map->x, map->y))
 		return (-2);

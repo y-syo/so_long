@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:11:53 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/03/17 08:59:40 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/03/22 07:22:54 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,22 @@ void	destroy_images(t_mlx *mlx)
 int	quit(int status, t_map *map)
 {
 	char	*msg_status;
-
-	ft_free("l", &map->map);
-	if (status == -1)
-		msg_status = "Incorrect map.";
-	else if (status == -2)
-		msg_status = "map is not closed.";
-	else if (status == -3)
-		msg_status = "symbols issue.";
-	else if (status == -4)
+	if (status == -4)
 		msg_status = "Invalid file.";
-	else if (status == -5)
-		msg_status = "Impossible map.";
-	else if (status == -6)
-		msg_status = "Memory Error, not your fault, sorry.";
+	else
+	{
+		ft_free("l", &map->map);
+		if (status == -1)
+			msg_status = "Incorrect map.";
+		else if (status == -2)
+			msg_status = "map is not closed.";
+		else if (status == -3)
+			msg_status = "symbols issue.";
+		else if (status == -5)
+			msg_status = "Impossible map.";
+		else if (status == -6)
+			msg_status = "memory allocation failed.";
+	}
 	ft_printf("Error: %s\n", msg_status);
 	return (-1);
 }
