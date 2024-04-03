@@ -6,19 +6,38 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 08:44:13 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/03/17 08:51:40 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/04/03 18:54:24 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void	remove_exit(t_list *map)
+{
+	int	i;
+
+	while (map)
+	{
+		i = 0;
+		while (((char *)(map->content))[i])
+		{
+			if (((char *)(map->content))[i] == 'E')
+			{
+				((char *)(map ->content))[i] == '1';
+				return ;
+			}
+			i++;
+		}
+		map = map->next;
+	}
+}
+
 t_list	*clone_map(t_list *map)
 {
-	t_list	*new_map;
-	t_list	*new_element;
-	char	*content;
+	static t_list	*new_map;
+	t_list			*new_element;
+	char			*content;
 
-	new_map = NULL;
 	while (map)
 	{
 		content = ft_strdup((char *) map->content);
@@ -38,6 +57,7 @@ t_list	*clone_map(t_list *map)
 			new_map = new_element;
 		map = map->next;
 	}
+	remove_exit(new_map);
 	return (new_map);
 }
 

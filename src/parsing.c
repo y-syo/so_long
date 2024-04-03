@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 19:10:13 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/03/22 07:43:36 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/04/03 19:27:20 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,11 @@ int	check_map(t_list *map, size_t x, size_t y)
 	return (0);
 }
 
+int	fix_last_line(t_map *map)
+{
+	// check if last char of last line is /n, if not, strdup with a newline added.
+}
+
 int	create_map(int fd, t_map *map)
 {
 	char	*line;
@@ -121,6 +126,7 @@ int	create_map(int fd, t_map *map)
 		free(line);
 		line = get_next_line(fd);
 	}
+	fix_last_line(map);
 	return (0);
 }
 
