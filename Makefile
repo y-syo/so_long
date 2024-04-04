@@ -6,7 +6,7 @@
 #    By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/22 07:21:18 by mmoussou          #+#    #+#              #
-#    Updated: 2024/03/22 09:00:27 by mmoussou         ###   ########.fr        #
+#    Updated: 2024/04/04 14:50:05 by mmoussou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SRCS =		 src/check_if_possible.c \
 			 src/draw.c \
 			 src/move.c \
 			 src/utils.c \
-			 src/init_img.c
+			 src/init_img.c \
+			 src/create_map.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 19:10:13 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/04/03 19:27:20 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/04/04 14:46:15 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,39 @@ int	check_map(t_list *map, size_t x, size_t y)
 	return (0);
 }
 
+char	*add_newline(char *line)
+{
+	char	*final;
+	int		i;
+
+	final = ft_calloc(sizeof(char) * ft_strlen(line) + 2);
+	if (!final)
+		return (final);
+	final[ft_strlen(line)] = '\n';
+	final[ft_strlen(line) + 1] = 0;
+	i = 0;
+	while (line[i])
+	{
+		final[i] = line[i];
+		i++;
+	}
+	return (final);
+}
+
 int	fix_last_line(t_map *map)
 {
-	// check if last char of last line is /n, if not, strdup with a newline added.
+	t_list	last;
+	char	*content;
+
+	last = ft_lstlast(map->map);
+	if (!(((char *)(last->content))[ft_strlen((char *)(last->content))]))
+		return (0);
+	content = add_newline(last->content);
+	if (!content)
+		return (-1);
+	free(last->content);
+	last->content = content;
+	return (0);
 }
 
 int	create_map(int fd, t_map *map)
@@ -108,7 +138,6 @@ int	create_map(int fd, t_map *map)
 	t_list	*new;
 
 	line = get_next_line(fd);
-	map->y = 0;
 	while (line)
 	{
 		map->y++;
@@ -126,7 +155,8 @@ int	create_map(int fd, t_map *map)
 		free(line);
 		line = get_next_line(fd);
 	}
-	fix_last_line(map);
+	if (fix_last_line(map))
+		return (-1);
 	return (0);
 }
 
@@ -142,6 +172,7 @@ int	parse(char **argv, t_map *map)
 	if (fd < 1)
 		return (-4);
 	map->map = NULL;
+	map->y = 0;
 	if (create_map(fd, map))
 		return (-6);
 	if (map->map == NULL)
