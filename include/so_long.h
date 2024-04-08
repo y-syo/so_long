@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:29:19 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/04/08 14:12:00 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/04/08 16:13:19 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,61 +23,24 @@
 
 // --------------- CONSTS ---------------
 
-# ifndef WIN_WIDTH
-#  define WIN_WIDTH 727
-# endif
+# define WIN_WIDTH 727
+# define WIN_HEIGHT 727
 
-# ifndef WIN_HEIGHT
-#  define WIN_HEIGHT 727
-# endif
+# define IMG_WIDTH 64
+# define IMG_HEIGHT 64
 
-# ifndef IMG_WIDTH
-#  define IMG_WIDTH 64
-# endif
+# define WALL_IMG_PATH "res/img/wall.png"
+# define TILE_IMG_PATH "res/img/tile.png"
+# define COLL_IMG_PATH "res/img/coll.png"
+# define PLAY_IMG_PATH "res/img/player.png"
+# define EXIT_IMG_PATH "res/img/exit.png"
 
-# ifndef IMG_HEIGHT
-#  define IMG_HEIGHT 64
-# endif
+# define MLX_W 26
+# define MLX_S 22
+# define MLX_A 4
+# define MLX_D 7
 
-# ifndef WALL_IMG_PATH
-#  define WALL_IMG_PATH "res/img/wall.png"
-# endif
-
-# ifndef TILE_IMG_PATH
-#  define TILE_IMG_PATH "res/img/tile.png"
-# endif
-
-# ifndef COLL_IMG_PATH
-#  define COLL_IMG_PATH "res/img/coll.png"
-# endif
-
-# ifndef PLAY_IMG_PATH
-#  define PLAY_IMG_PATH "res/img/player.png"
-# endif
-
-# ifndef EXIT_IMG_PATH
-#  define EXIT_IMG_PATH "res/img/exit.png"
-# endif
-
-# ifndef MLX_W
-#  define MLX_W 26
-# endif
-
-# ifndef MLX_S
-#  define MLX_S 22
-# endif
-
-# ifndef MLX_A
-#  define MLX_A 4
-# endif
-
-# ifndef MLX_D
-#  define MLX_D 7
-# endif
-
-# ifndef FPS_LIMIT
-#  define FPS_LIMIT 60
-# endif
+# define FPS_LIMIT 60
 
 // --------------- STRUCTS ---------------
 
