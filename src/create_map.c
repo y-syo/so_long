@@ -6,19 +6,39 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 14:45:47 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/04/04 14:46:01 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/04/08 14:15:19 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+char	*add_newline(char *line)
+{
+	char	*final;
+	int		i;
+
+	final = ft_calloc(sizeof(char), ft_strlen(line) + 2);
+	if (!final)
+		return (final);
+	final[ft_strlen(line)] = '\n';
+	final[ft_strlen(line) + 1] = 0;
+	i = 0;
+	while (line[i])
+	{
+		final[i] = line[i];
+		i++;
+	}
+	return (final);
+}
+
 int	fix_last_line(t_map *map)
 {
-	t_list	last;
+	t_list	*last;
 	char	*content;
 
 	last = ft_lstlast(map->map);
-	if (!(((char *)(last->content))[ft_strlen((char *)(last->content))]))
+	if (((char *)(last->content))
+		[ft_strlen((char *)(last->content)) - 1] == '\n')
 		return (0);
 	content = add_newline(last->content);
 	if (!content)

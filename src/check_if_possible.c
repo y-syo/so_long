@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 08:44:13 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/04/03 18:54:24 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/04/08 14:01:44 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	remove_exit(t_list *map)
 		{
 			if (((char *)(map->content))[i] == 'E')
 			{
-				((char *)(map ->content))[i] == '1';
+				((char *)(map ->content))[i] = '1';
 				return ;
 			}
 			i++;
