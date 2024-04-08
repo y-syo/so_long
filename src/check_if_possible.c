@@ -6,31 +6,11 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 08:44:13 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/04/08 14:01:44 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/04/08 15:15:41 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	remove_exit(t_list *map)
-{
-	int	i;
-
-	while (map)
-	{
-		i = 0;
-		while (((char *)(map->content))[i])
-		{
-			if (((char *)(map->content))[i] == 'E')
-			{
-				((char *)(map ->content))[i] = '1';
-				return ;
-			}
-			i++;
-		}
-		map = map->next;
-	}
-}
 
 t_list	*clone_map(t_list *map)
 {
@@ -57,7 +37,6 @@ t_list	*clone_map(t_list *map)
 			new_map = new_element;
 		map = map->next;
 	}
-	remove_exit(new_map);
 	return (new_map);
 }
 
@@ -66,8 +45,12 @@ void	check_possible_rec(t_list *map, int x, int y)
 	t_list	*map_y;
 
 	map_y = get_map_y(map, y - 1);
-	if (((char *) map_y->next->content)[x] == '1')
+	if (((char *) map_y->next->content)[x] == '1'
+		|| ((char *) map_y->next->content)[x] == 'E')
+	{
+		((char *) map_y->next->content)[x] = '1';
 		return ;
+	}
 	((char *) map_y->next->content)[x] = '1';
 	if (((char *) map_y->content)[x] != '1')
 		check_possible_rec(map, x, y - 1);
