@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 21:00:18 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/03/01 22:03:36 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:34:47 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	put_img(int index, t_mlx *mlx, int x, int y)
 			smlx->img_play, x * IMG_WIDTH, y * IMG_HEIGHT);
 }
 
-void	draw_line(void *param)
+void	put_line(void *param)
 {
 	char		*line;
 	int			i;
@@ -96,7 +96,7 @@ int	update(void *param)
 
 	mlx = (t_mlx *)param;
 	map = mlx->map;
-	ft_lstiter(map->map, &draw_line);
-	draw_line(NULL);
+	ft_lstiter(map->map, &put_line);
+	put_line(NULL);
 	return (0);
 }
