@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 20:54:20 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/03/17 08:46:57 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/04/23 14:32:50 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	move(int x, int y, t_mlx *mlx)
 	t_list		*map;
 	t_list		*player_y;
 	int			player_x;
-	static int	count = 0;
+	static int	count = 1;
 
 	map = mlx->map->map;
 	player_x = find_player_x(map);
