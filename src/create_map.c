@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 14:45:47 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/04/08 14:15:19 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/04/23 13:28:03 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,10 @@ int	fix_last_line(t_map *map)
 	return (0);
 }
 
-int	create_map(int fd, t_map *map)
+int	create_map(int fd, t_map *map, t_list *new)
 {
 	char	*line;
 	char	*content;
-	t_list	*new;
 
 	line = get_next_line(fd);
 	while (line)
@@ -62,7 +61,7 @@ int	create_map(int fd, t_map *map)
 		new = ft_lstnew(content);
 		if (!new || !content)
 		{
-			ft_free("llc", &map->map, &new, &content);
+			ft_free("llcf", &map->map, &new, &content, fd);
 			return (-1);
 		}
 		if (map->map)
@@ -72,7 +71,8 @@ int	create_map(int fd, t_map *map)
 		free(line);
 		line = get_next_line(fd);
 	}
-	if (fix_last_line(map))
+	ft_free("f", fd);
+	if (map->map && map->map->content && fix_last_line(map))
 		return (-1);
 	return (0);
 }

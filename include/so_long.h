@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:29:19 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/04/08 16:13:19 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/04/23 13:28:24 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct s_mlx
 // --------------- FUNCS ---------------
 
 int		parse(char **argv, t_map *map);
-int		create_map(int fd, t_map *map);
+int		create_map(int fd, t_map *map, t_list *new);
 
 void	move(int x, int y, t_mlx *mlx);
 int		update(void *param);

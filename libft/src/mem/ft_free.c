@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:27:31 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/03/22 07:02:11 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/04/23 13:23:02 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	ft_free(const char *str, ...)
 			free_list(va_arg(args, t_list **));
 		if (str[i] == 'a')
 			free_tab(va_arg(args, char ***));
+		if (str[i] == 'f')
+			close(va_arg(args, int));
 		i++;
 	}
 }

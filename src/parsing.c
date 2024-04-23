@@ -6,7 +6,7 @@
 /*   By: mmoussou <mmoussou@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 19:10:13 by mmoussou          #+#    #+#             */
-/*   Updated: 2024/04/08 14:11:26 by mmoussou         ###   ########.fr       */
+/*   Updated: 2024/04/23 13:28:41 by mmoussou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	parse(char **argv, t_map *map)
 		return (-4);
 	map->map = NULL;
 	map->y = 0;
-	if (create_map(fd, map))
+	if (create_map(fd, map, NULL))
 		return (-6);
 	if (map->map == NULL)
 		return (-4);
